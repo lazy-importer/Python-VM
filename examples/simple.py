@@ -1,0 +1,8 @@
+x = 10
+print(x)
+
+y = 20
+print(y)
+
+result = x + y
+print(result)
