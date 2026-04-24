@@ -1,8 +1,8 @@
-# Python VM Virtualizer
+# Python Virtualizer
 
-Hey ! i've make a simple stack-based virtual machine that translates and executes Python bytecode because i was  busy and just wanna have some fun. This project was originally created for a high school presentation to demonstrate how Python interprets code but i wanna share it here if anyone want to take a look
+Hey ! I've made a simple stack-based virtual machine that translates and executes Python bytecode because I was busy and just wanna have some fun. This project was originally created for a high school presentation to demonstrate how Python interprets code but I wanna share it here if anyone wants to take a look
 
-# disclaimer : the script was fully made by my own and NOT AI generated so if you see comments its just mine ( crazy i need to say that ) -_-
+# disclaimer : the script was fully made by myself and NOT AI generated so if you see comments it's just mine ( crazy I need to say that ) -_-
 
 When you write Python code, CPython doesn't execute it directly. It first compiles your source code into bytecode, then interprets that bytecode. This project replicates a small part of that process:
 
@@ -11,9 +11,9 @@ When you write Python code, CPython doesn't execute it directly. It first compil
 3. Translates the bytecode into a custom virtual instruction set
 4. Executes the translated bytecode on a custom stack-based VM
 
-It's not a full Python interpreter , it supports a limited subset of operations (variables, constants, print, comparisons, simple arithmetic, conditionals). The goal is educational, to show the core concepts of bytecode interpretation.
+It's not a full Python interpreter, it supports a limited subset of operations (variables, constants, print, comparisons, simple arithmetic, conditionals). The goal is educational, to show the core concepts of bytecode interpretation.
 
-## How to test it myself ? 
+## How to test it myself? 
 
 ```bash
 python vm.py
@@ -46,7 +46,7 @@ vm.run("output.vmpy")
 
 ## How it works
 
-### The bytecode pipelines
+### The bytecode pipeline
 
 ```
 Python source → CPython compilation → Python bytecode → Translation → .vmpy file → VM execution
@@ -63,7 +63,7 @@ BINARY_OP +=    → pop two values, add them, push result
 STORE_NAME var  → pop result and store in variables["var"]
 ```
 
-[`handle_binary_op`](vm.py#L309) and [`handle_inplace_add`](vm.py#L339) methods in [`vm.py`](vm.py) for how these operations are implemented.
+See the [`handle_binary_op`](vm.py#L309) and [`handle_inplace_add`](vm.py#L339) methods in [`vm.py`](vm.py) for how these operations are implemented.
 
 ### The dispatcher
 
@@ -76,7 +76,7 @@ while ip < len(bytecode):
     handler(arg)
 ```
 
-[`dispatcher`](vm.py#L437) method in [`vm.py`](vm.py) 
+Check out the [`dispatcher`](vm.py#L437) method in [`vm.py`](vm.py) 
 
 ## Supported operations
 
@@ -91,7 +91,7 @@ All handlers are defined in the [`VM`](vm.py#L205) class in [`vm.py`](vm.py).
 
 ## File format (.vmpy)
 
-I've wanted to make my own custom format based on python one ( yeah totally not the same thing )
+I wanted to make my own custom format based on Python one ( yeah totally not the same thing )
 
 ```
 magic(4) + bytecode_length(4) + bytecode + marshal(consts) + marshal(names)
